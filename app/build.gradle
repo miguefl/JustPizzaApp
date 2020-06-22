@@ -1,0 +1,137 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.migferlab.justpizza"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+}
+
+ext {
+    versions = [
+            'kotlin_courutines'      : '1.3.7',
+            'android_core_ktx'       : '1.3.0',
+            'legacy_support_v4'      : '1.0.0',
+            'lifecycle_viewmodel_ktx': '2.2.0',
+            'lifecycle_extensions'   : '2.2.0',
+            'appcompat'              : '1.1.0',
+            'constraint_layout'      : '1.1.3',
+            'material'               : '1.1.0',
+            'navigation_fragment_ktx': '2.2.2',
+            'navigation_ui_ktx'      : '2.2.2',
+            'kodein'                 : '7.0.0',
+            'junit'                  : '4.13',
+            'androidx_junit'         : '1.1.1',
+            'espresso'               : '3.2.0',
+            'fluxy'                  : '0.1.3',
+            'fluxy_timber'           : '0.1.0',
+            'timber'                 : '4.7.1',
+            'glide'                  : '4.11.0',
+            'recycler'               : '1.2.0-alpha03',
+            'firebaseAnalytics'      : '17.4.3',
+            'crashlytics'            : '2.10.1',
+            'firebasePerformance'    : '19.0.7',
+            'firestore'              : '21.4.3',
+            'firebaseUiStorage'      : '6.2.0',
+            'firebaseStorage'        : '19.1.1',
+            'firebaseRealTime'       : '19.3.1',
+            'firebaseAuth'           : '19.3.1',
+            'playServicesAuth'       : '18.0.0',
+            'maps'                   : '17.0.0'
+    ]
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    /** Kotlin & Android */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin_courutines}"
+    implementation "androidx.core:core-ktx:${versions.android_core_ktx}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.kotlin_courutines}"
+    implementation "androidx.legacy:legacy-support-v4:${versions.legacy_support_v4}"
+    implementation "com.google.android.gms:play-services-auth:${versions.playServicesAuth}"
+
+    /** Architecture */
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_viewmodel_ktx}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle_extensions}"
+
+    /** UI */
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraint_layout}"
+    implementation "com.google.android.material:material:${versions.material}"
+    implementation "androidx.recyclerview:recyclerview:${versions.recycler}"
+
+    /** Navigation */
+    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation_fragment_ktx}"
+    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation_ui_ktx}"
+
+    /** Kodein DI */
+    implementation "org.kodein.di:kodein-di-framework-android-x:${versions.kodein}"
+
+    /** Fluxy */
+    implementation "com.github.hoop-carpool.fluxy:fluxy:${versions.fluxy}"
+    implementation "com.github.hoop-carpool.fluxy:timberlogger:${versions.fluxy_timber}"
+
+    /** Utils */
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+
+    /** Glide */
+    implementation "com.github.bumptech.glide:glide:${versions.glide}"
+    kapt "com.github.bumptech.glide:compiler:${versions.glide}"
+
+    /** Firebase */
+    implementation "com.google.firebase:firebase-analytics:${versions.firebaseAnalytics}"
+    implementation "com.google.firebase:firebase-auth:${versions.firebaseAuth}"
+    implementation "com.crashlytics.sdk.android:crashlytics:${versions.crashlytics}"
+    implementation "com.google.firebase:firebase-perf:${versions.firebasePerformance}"
+    implementation "com.google.firebase:firebase-firestore-ktx:${versions.firestore}"
+    implementation "com.firebaseui:firebase-ui-storage:${versions.firebaseUiStorage}"
+    implementation "com.google.firebase:firebase-storage-ktx:${versions.firebaseStorage}"
+    implementation "com.google.firebase:firebase-database:${versions.firebaseRealTime}"
+
+    /** Maps */
+    implementation "com.google.android.gms:play-services-maps:${versions.maps}"
+
+    /** Test */
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.androidx_junit}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
+}

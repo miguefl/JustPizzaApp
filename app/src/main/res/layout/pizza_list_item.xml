@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pizzaRecipeItemCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardMaxElevation="8dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/pizzaListItemImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:minHeight="28dp"
+            android:scaleType="fitXY"
+            tools:src="@drawable/pizza_food_slice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pizzaListItemFavoriteButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_empty_fav_24_white"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:fabSize="auto"
+            app:layout_constraintBottom_toBottomOf="@+id/pizzaListItemImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pizzaListItemImage"
+            app:tint="#FFF" />
+
+        <TextView
+            android:id="@+id/pizzaListItemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/PizzaListTitle"
+            app:layout_constraintBottom_toTopOf="@id/chipGroupTags"
+            app:layout_constraintEnd_toStartOf="@id/pizzaListItemFavoriteButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pizzaListItemImage"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="Pizza title" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupTags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingBottom="8dp"
+            app:chipSpacing="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pizzaListItemName"
+            app:singleSelection="false">
+
+            <include
+                android:id="@+id/chipTag1"
+                layout="@layout/tag_chip" />
+
+            <include
+                android:id="@+id/chipTag2"
+                layout="@layout/tag_chip" />
+
+            <include
+                android:id="@+id/chipTag3"
+                layout="@layout/tag_chip" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+

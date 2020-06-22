@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.migferlab.justpizza.features.login.LoginFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/login_layout">
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.migferlab.justpizza.features.home.HomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/home">
+        <action
+            android:id="@+id/action_home_to_pizza_list"
+            app:destination="@id/pizzaRecipeListFragment" />
+        <action
+            android:id="@+id/action_home_sign_out"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_home_to_favs_list"
+            app:destination="@id/pizzaRecipeListFragment" />
+        <action
+            android:id="@+id/action_home_to_random"
+            app:destination="@id/pizzaRecipeDetailFragment" />
+        <action
+            android:id="@+id/action_home_to_restaurants"
+            app:destination="@id/restaurants" />
+    </fragment>
+    <fragment
+        android:id="@+id/pizzaRecipeListFragment"
+        android:name="com.migferlab.justpizza.features.pizza.list.PizzaRecipeListFragment"
+        android:label="@string/recipes"
+        tools:layout="@layout/pizza_list">
+        <argument
+            android:name="favs"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+        <action
+            android:id="@+id/action_pizza_list_to_detail"
+            app:destination="@id/pizzaRecipeDetailFragment"
+            app:enterAnim="@anim/item_animation_from_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/pizzaRecipeDetailFragment"
+        android:name="com.migferlab.justpizza.features.pizza.detail.PizzaRecipeDetailFragment"
+        android:label=""
+        tools:layout="@layout/pizza_detail">
+        <argument
+            android:name="pizzaRecipeId"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="pizzaRecipeTittle"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="random"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </fragment>
+    <fragment
+        android:id="@+id/restaurants"
+        android:name="com.migferlab.justpizza.features.restaurant.RestaurantFragment"
+        android:label="@string/restaurants">
+    </fragment>
+
+
+</navigation>

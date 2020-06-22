@@ -1,2 +1,2 @@
 # JustPizzaApp
-JustPizza App
+Kotlin + MVVM + LiveData + Flux + Firebase + Clean Architecture App
